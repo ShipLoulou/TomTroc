@@ -20,4 +20,19 @@ class UserManager extends AbstractEntityManager
         }
         return $users;
     }
+
+    /**
+     * Récupère un utilisateur en fonction de son email.
+     * @return ?User : un objets User
+     */
+    public function getUserByEmail(?string $email): ?User
+    {
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
+        $user = $result->fetch();
+        if ($user) {
+            return new User($user);
+        }
+        return null;
+    }
 }

@@ -21,6 +21,16 @@ try {
             $bookController = new BookController();
             $bookController->showSingleBook();
             break;
+
+        case 'logIn':
+            $userController = new UserController();
+            $userController->logIn();
+            break;
+            
+        case 'logOut':
+            $userController = new UserController();
+            $userController->logOut();
+            break;
         
         default:
             throw new Exception("La page demandée n'existe pas.");

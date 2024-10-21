@@ -12,6 +12,11 @@ try {
             $bookController->showHome();
             break;
 
+        case 'books':
+            $bookController = new BookController();
+            $bookController->showBooks();
+            break;
+
         case 'singleBook':
             $bookController = new BookController();
             $bookController->showSingleBook();

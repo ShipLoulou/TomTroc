@@ -6,6 +6,22 @@
 class BookManager extends AbstractEntityManager
 {
     /**
+     * Récupère tous les livres.
+     * @return array : un tableau d'objets Book
+     */
+    public function getAllBooks(): array
+    {
+        $sql = "SELECT * FROM book";
+        $result = $this->db->query($sql);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
+    
+    /**
      * Récupère les 4 derniers livres ajouté.
      * @return array : un tableau d'objets Book
      */
@@ -35,5 +51,24 @@ class BookManager extends AbstractEntityManager
             return new Book($book);
         }
         return null;
+    }
+
+    /**
+     * Récupère les livres en fonction de la recherche soumis par l'utilisateur (en fonction du titre du livre).
+     * @return array : un tableau d'objets Book
+     */
+    public function getBooksAfterSearch(string $contentSearch): array
+    {
+        $sql = "SELECT * FROM book WHERE title LIKE :search";
+        $result = $this->db->query($sql, [
+            'search' => "%$contentSearch%"
+        ]);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+
+        return $books;
     }
 }

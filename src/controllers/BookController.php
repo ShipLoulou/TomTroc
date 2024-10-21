@@ -38,6 +38,35 @@ class BookController
     }
 
     /**
+     * Affiche la page books.
+     * @return void
+     */
+    public function showBooks(): void
+    {
+        // Récupère tous les livres.
+        $books = $this->bookManager->getAllBooks();
+
+        // Récupère tous les utilisateurs.
+        $users = $this->userManager->getAllUser();
+
+        // Récupère le contenu saisie dans le barre de recherche
+        $contentSearch = Utils::request("search");
+
+        if (isset($contentSearch) && !empty($contentSearch)) {
+            $books = $this->bookManager->getBooksAfterSearch($contentSearch);
+        }
+
+        // Description de la page home (SEO).
+        $description = "Ensemble de livre à échanger.";
+
+        $view = new View("Nos livres", $description, "page_book");
+        $view->render("books", [
+            'books' => $books,
+            'users' => $users
+        ]);
+    }
+
+    /**
      * Affiche la page singleBook.
      * Si l'utilisateur clique sur message, il est redirigé avec une conversation.
      * @return void
@@ -61,7 +90,7 @@ class BookController
         $users = $this->userManager->getAllUser();
 
         // Description de la page home (SEO).
-        $description = "Description";
+        $description = "Livre {$book->getTitle()} de l'auteur {$book->getAuthor()}";
 
         $view = new View($book->getTitle(), $description, "page_singleBook");
         $view->render("singleBook", [

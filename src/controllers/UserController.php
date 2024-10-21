@@ -3,6 +3,53 @@
 class UserController
 {
     /**
+     * Inscription de l'utilisateur.
+     * @return void
+     */
+    public function signIn(): void
+    {
+        // Supprime des données $_SESSION 'error' et 'verificationInfoUser' à chaque actualiation.
+        unset($_SESSION['error']);
+        unset($_SESSION['verificationInfoUser']);
+
+        // Récupère les données du formualaires
+        $pseudo = Utils::request("pseudo");
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+        $profilePicture = "images/static/profilePictureDefault.png";
+
+        // Récupère tous les utilisateurs.
+        $userManager = new UserManager();
+        $users = $userManager->getAllUser();
+
+        // Vérifie que les données de l'utilisateur soit correctes
+        if ($pseudo !== null && $email !== null && $password !== null && $users !== null) {
+            $errorMessage = Utils::verificationInfoUser($pseudo, $email, $password, $users, true, true, true);
+        }
+
+        if ($_SESSION['verificationInfoUser'] === true) {
+            unset($_SESSION['error']);
+            unset($_SESSION['verificationInfoUser']);
+
+            $user = new User([
+                'pseudo' => strip_tags($pseudo),
+                'email' => strip_tags($email),
+                'password' => strip_tags($password),
+                'profilePicture' => strip_tags($profilePicture)
+            ]);
+            $userManager->addUser($user);
+
+            Utils::redirect("logIn");
+        }
+
+        // Description de la page home (SEO).
+        $description = "Page d'inscription du site TomTroc.";
+
+        $view = new View("Inscription", $description, "page_auth");
+        $view->render("singIn");
+    }
+
+    /**
      * Connexion de l'utilisateur.
      * @return void
      */

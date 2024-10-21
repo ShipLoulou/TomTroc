@@ -53,6 +53,59 @@ class Utils
 
         return $finalString;
     }
+    
+    /**
+     * Vérifie que les données saisies par un utilisateur soit correctes
+     * @param string $pseudo : le pseudo saisie par l'utilisateur
+     * @param string $email : l'email saisie par l'utilisateur
+     * @param string $password : le password saisie par l'utilisateur
+     * @param array $users : l'ensemble des utilisateurs
+     * @return void
+     */
+    public static function verificationInfoUser(string $pseudo, string $email, string $password, array $users, ?bool $passwordTreatment, ?bool $emailTreatment, ?bool $pseudoTreatment)
+    {
+        // Vérifie la validité du mot de passe
+        $checkPassword;
+
+        if ($passwordTreatment) {
+            if (preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(\w|[!@#$%]).{4,8}$/", $password)) {
+                $checkPassword = true;
+            } else {
+                $checkPassword = false;
+            }
+        } else {
+            $checkPassword = true;
+        }
+
+        // Vérifie que les données saisies soient correctes, si non, un message d'erreur est revoyer
+        $errorMessage = null;
+
+        $returnsError = match (true) {
+            empty($pseudo)
+            || empty($email)
+            || empty($password) => $errorMessage = "Tous les champs sont obligatoires",
+            strlen($pseudo) < 4  => $errorMessage = "Le pseudo doit avoir au minimun 4 caractères",
+            $checkPassword === false => $errorMessage = "Le mot de passe doit avoir 1 majuscule, 1 minuscule, un nombre et doit contenir entre 6 à 13 caractères",
+            default => null
+        };
+
+        foreach ($users as $user) {
+            if ($pseudoTreatment && $user->getPseudo() === $pseudo) {
+                $errorMessage = "Le pseudo est déjà utilisé";
+                break;
+            } elseif ($emailTreatment && $user->getEmail() === $email) {
+                $errorMessage = "L'email est déjà utilisé";
+            }
+        }
+
+        // Affiche les messages d'erreurs
+        if ($errorMessage !== null && $_POST['formulaireSend'] === 'ok') {
+            $_SESSION['error'] = $errorMessage;
+        } else {
+            unset($_SESSION['error']);
+            $_SESSION['verificationInfoUser'] = true;
+        }
+    }
 
     /**
      * Redirige vers une URL.

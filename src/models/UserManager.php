@@ -35,4 +35,20 @@ class UserManager extends AbstractEntityManager
         }
         return null;
     }
+
+    /**
+     * Insère le nouvel utilisateur dans la base de données.
+     * @param User $user : objet User
+     * @return void
+     */
+    public function addUser(User $user): void
+    {
+        $sql = "INSERT INTO user (pseudo, email, password, profilePicture, registration_date, unreadMessage) VALUES (:pseudo, :email, :password, :profilePicture, NOW(), 0)";
+        $this->db->query($sql, [
+            'pseudo' => $user->getPseudo(),
+            'email' => $user->getEmail(),
+            'password' => password_hash($user->getPassword(), PASSWORD_DEFAULT),
+            'profilePicture' => $user->getProfilePicture()
+        ]);
+    }
 }

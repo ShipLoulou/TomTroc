@@ -22,11 +22,16 @@ try {
             $bookController->showSingleBook();
             break;
 
+        case 'singIn':
+            $userController = new UserController();
+            $userController->signIn();
+            break;
+
         case 'logIn':
             $userController = new UserController();
             $userController->logIn();
             break;
-            
+
         case 'logOut':
             $userController = new UserController();
             $userController->logOut();

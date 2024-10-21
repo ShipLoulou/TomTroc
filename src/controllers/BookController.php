@@ -36,4 +36,38 @@ class BookController
             'users' => $users
         ]);
     }
+
+    /**
+     * Affiche la page singleBook.
+     * Si l'utilisateur clique sur message, il est redirigé avec une conversation.
+     * @return void
+     */
+    public function showSingleBook(): void
+    {
+        // Id du livre à afficher
+        $bookId = filter_var(Utils::request("id", -1), FILTER_VALIDATE_INT);
+
+        // Récupère l'id de l'utilisateur.
+        $userId = filter_var($_SESSION["idUser"], FILTER_VALIDATE_INT);
+
+        // Récupère le livre en fonction de l'id.
+        $book = $this->bookManager->getBookById($bookId);
+
+        if (!$book) {
+            throw new Exception("Le livre demandé n'existe pas.");
+        }
+
+        // Récupère tous les utilisateurs.
+        $users = $this->userManager->getAllUser();
+
+        // Description de la page home (SEO).
+        $description = "Description";
+
+        $view = new View($book->getTitle(), $description, "page_singleBook");
+        $view->render("singleBook", [
+            'book' => $book,
+            'users' => $users,
+            'userId' => $userId
+        ]);
+    }
 }

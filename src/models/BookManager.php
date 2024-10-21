@@ -20,4 +20,20 @@ class BookManager extends AbstractEntityManager
         }
         return $books;
     }
+
+    /**
+     * Récupère un livre en fonction de son id.
+     * @param int $id : id du livre
+     * @return ?array : un tableau d'objets Book ou null si l'objet n'existe pas
+     */
+    public function getBookById(int $bookId): ?Book
+    {
+        $sql = "SELECT * FROM book WHERE book_id = :id";
+        $result = $this->db->query($sql, ['id' => $bookId]);
+        $book = $result->fetch();
+        if ($book) {
+            return new Book($book);
+        }
+        return null;
+    }
 }

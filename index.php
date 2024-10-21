@@ -11,6 +11,11 @@ try {
             $bookController = new BookController();
             $bookController->showHome();
             break;
+
+        case 'singleBook':
+            $bookController = new BookController();
+            $bookController->showSingleBook();
+            break;
         
         default:
             throw new Exception("La page demandée n'existe pas.");

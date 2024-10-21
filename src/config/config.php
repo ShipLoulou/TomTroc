@@ -2,7 +2,7 @@
 
 session_start();
 
-define('TEMPLATE_VIEW_PATH', './views/templates/'); // Le chemin vers les templates de vues.
+define('TEMPLATE_VIEW_PATH', 'src/views/templates/'); // Le chemin vers les templates de vues.
 define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php'); // Le chemin vers le template principal.
 
 // Paramètres pour accéder à la base de donnée.

@@ -1,0 +1,1961 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* PROPRIÉTÉ PAR DÉFAULT */
+h1,
+h2 {
+  font-family: "Playfair Display", serif;
+}
+
+li,
+p,
+h3,
+label,
+a {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f5f3ef;
+}
+
+header,
+main .presentation {
+  padding: 0 150px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* CLASSE RÉUTILISABE */
+.firstTitle {
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 48px;
+}
+
+.secondeTitle {
+  font-weight: 400;
+  font-size: 32px;
+}
+
+.btn-style-1 {
+  background-color: #00ac66;
+  border-radius: 10px;
+  padding: 22px 36px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn-style-2 {
+  background-color: #f5f3ef;
+  border-radius: 10px;
+  padding: 22px 36px;
+  border: 1px solid #00ac66;
+  color: #00ac66;
+  font-size: 16px;
+}
+
+.card-style-1 img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.card-style-1 figcaption {
+  background-color: #fff;
+  width: 200px;
+  height: 124px;
+  border-radius: 0 0 10px 10px;
+  padding: 20px 14px 23px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  top: -5px;
+}
+.card-style-1 figcaption div h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-style-1 figcaption div p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.card-style-1 figcaption p {
+  font-size: 10px;
+  font-weight: 400;
+  color: #a6a6a6;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* BARRE DE NAVIGATION */
+nav {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+nav .logoHeader {
+  font-family: "Playfair Display", serif;
+  display: flex;
+  align-items: center;
+  width: 155px;
+  min-width: 155px;
+}
+nav .logoHeader .logo {
+  background-color: #00ac66;
+  width: 51px;
+  height: 51px;
+  border-radius: 8.5px;
+  position: relative;
+  margin-right: 15px;
+}
+nav .logoHeader .logo span {
+  color: #fff;
+  font-size: 23px;
+  font-weight: 800;
+  position: absolute;
+}
+nav .logoHeader .logo span:last-child {
+  top: 15px;
+  left: 25px;
+}
+nav .logoHeader .logo span:first-child {
+  top: 6px;
+  left: 8.5px;
+}
+nav .logoHeader h1 {
+  color: #00ac66;
+  font-weight: 600;
+  font-size: 20px;
+}
+nav .navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 78px;
+}
+nav .navigation ul {
+  font-size: 14px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+nav .navigation ul svg {
+  margin-right: 4px;
+}
+nav .navigation ul li a {
+  display: flex;
+  align-items: center;
+}
+nav .navigation ul:first-child li {
+  margin-right: 44px;
+}
+nav .navigation ul:first-child li:last-child {
+  margin-right: 0px;
+}
+nav .navigation ul:last-child li {
+  margin-left: 57px;
+}
+nav .navigation ul:last-child li:first-child {
+  margin-left: 0px;
+}
+nav .iconMenuMobile {
+  display: none;
+}
+
+/* PAGE HOME */
+.page_home {
+  padding-top: 80px;
+}
+.page_home .presentation {
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.page_home .presentation .left,
+.page_home .presentation .right {
+  width: 50%;
+}
+.page_home .presentation .left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 108px 0 130px;
+}
+.page_home .presentation .left h2 {
+  margin-bottom: 16px;
+}
+.page_home .presentation .left p {
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+.page_home .presentation .right img {
+  width: 100%;
+}
+.page_home .presentation .right p {
+  margin-top: 12px;
+  font-weight: 400;
+  font-size: 12px;
+  font-style: italic;
+  color: #a6a6a6;
+  text-align: end;
+}
+
+.latestAddition {
+  background-color: #faf9f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0 64px 0;
+}
+.latestAddition .container {
+  padding: 80px 0 60px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 38px;
+}
+
+.howItWorks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+}
+.howItWorks h2 {
+  margin-bottom: 24px;
+}
+.howItWorks .subtitle {
+  font-weight: 300;
+  font-size: 16px;
+  max-width: 400px;
+  text-align: center;
+}
+.howItWorks .container {
+  display: flex;
+  gap: 36px;
+  padding: 40px 0 48px 0;
+}
+.howItWorks .container div {
+  width: 215px;
+  height: 139px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 18px;
+}
+
+.ourValues {
+  padding-bottom: 162px;
+}
+.ourValues img {
+  width: 100%;
+  height: 230px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.ourValues .container {
+  padding: 80px 0 0 0;
+  max-width: 392px;
+  margin: 0 auto;
+  position: relative;
+}
+.ourValues .container h2 {
+  margin-bottom: 29px;
+}
+.ourValues .container p {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.ourValues .container .signature {
+  margin-top: 39px;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 12px;
+  color: #a6a6a6;
+}
+.ourValues svg {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+}
+
+.containerLogoFooter {
+  font-family: "Playfair Display", serif;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+.containerLogoFooter .logo {
+  width: 51px;
+  height: 51px;
+  border-radius: 8.5px;
+  position: relative;
+  top: 6px;
+}
+.containerLogoFooter span {
+  color: #00ac66;
+  font-size: 18px;
+  font-weight: 800;
+  position: absolute;
+}
+.containerLogoFooter span:first-child {
+  top: 6px;
+  left: 8.5px;
+}
+.containerLogoFooter span:last-child {
+  top: 12px;
+  left: 20px;
+}
+
+footer {
+  background-color: #fff;
+  height: 61px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+footer ul {
+  display: flex;
+  align-items: center;
+}
+footer ul li {
+  margin-left: 40px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.page_book {
+  padding: 130px 0 80px 0;
+}
+.page_book .booksOnExchange {
+  max-width: 915px;
+  margin: 0 auto;
+}
+.page_book .booksOnExchange .part-Title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+.page_book .booksOnExchange .part-Title .input {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.page_book .booksOnExchange .part-Title .input form {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+}
+.page_book .booksOnExchange .part-Title .input input {
+  height: 50px;
+  width: 322px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  padding: 16px 16px 16px 40px;
+  position: relative;
+}
+.page_book .booksOnExchange .part-Title .input input[type='submit'] {
+  position: absolute;
+  left: 0;
+  z-index: -1;
+}
+.page_book .booksOnExchange .part-Title .input input::-moz-placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #a6a6a6;
+}
+.page_book .booksOnExchange .part-Title .input input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  color: #a6a6a6;
+}
+.page_book .booksOnExchange .part-Title .input svg {
+  width: 20px;
+  position: absolute;
+  left: 12px;
+}
+.page_book .booksOnExchange .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 48px;
+  -moz-column-gap: 38px;
+  column-gap: 38px;
+}
+
+.page_singleBook .book {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.page_singleBook .book .right,
+.page_singleBook .book .left {
+  width: 50%;
+  height: 863px;
+}
+.page_singleBook .book .right {
+  padding: 60px 80px 80px 85px;
+  background-color: #faf9f7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.page_singleBook .book .right h2 {
+  margin-bottom: 16px;
+}
+.page_singleBook .book .right div .author {
+  color: #a6a6a6;
+  font-weight: 400;
+  font-size: 16px;
+  padding-bottom: 32px;
+}
+.page_singleBook .book .right div .dash {
+  background-color: #a6a6a6;
+  height: 1px;
+  width: 27px;
+}
+.page_singleBook .book .right h3 {
+  margin: 32px 0 16px 0;
+  font-weight: 600;
+  font-size: 8px;
+}
+.page_singleBook .book .right p {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.page_singleBook .book .right br {
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.page_singleBook .book .right figure a {
+  display: flex;
+  padding: 6px 17px 6px 6px;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 114px;
+  height: 60px;
+  background-color: #fff;
+}
+.page_singleBook .book .right figure figcaption {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+}
+.page_singleBook .book .right figure img {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.page_singleBook .book .left .cover {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 863px;
+}
+
+.page_auth .auth {
+  display: flex;
+}
+
+#authError {
+  width: 322px;
+  text-align: center;
+  background: #ed143d36;
+  color: red;
+  margin-bottom: 20px;
+  padding: 5px 0;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.page_auth .auth .right,
+.page_auth .auth .left {
+  width: 50%;
+  height: 863px;
+}
+.page_auth .auth .right h2,
+.page_auth .auth .left h2 {
+  margin-bottom: 56px;
+}
+.page_auth .auth .right form div,
+.page_auth .auth .left form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+.page_auth .auth .right form label,
+.page_auth .auth .left form label {
+  color: #a6a6a6;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.page_auth .auth .right form input[type="text"],
+.page_auth .auth .right form input[type="email"],
+.page_auth .auth .right form input[type="password"],
+.page_auth .auth .left form input[type="text"],
+.page_auth .auth .left form input[type="email"],
+.page_auth .auth .left form input[type="password"] {
+  height: 50px;
+  width: 322px;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+}
+.page_auth .auth .right form input[type="submit"],
+.page_auth .auth .left form input[type="submit"] {
+  width: 322px;
+}
+.page_auth .auth .right .alreadyRegistered,
+.page_auth .auth .left .alreadyRegistered {
+  display: flex;
+  font-family: "Inter", sans-serif;
+  margin-top: 40px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #292929;
+}
+.page_auth .auth .right .alreadyRegistered a,
+.page_auth .auth .left .alreadyRegistered a {
+  margin-left: 4px;
+  text-decoration: underline;
+}
+.page_auth .auth .left {
+  padding: 130px 150px;
+}
+.page_auth .auth .right img {
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  height: 863px;
+}
+
+/* .auth .authForm .alreadyRegistered p {
+  } */
+@media screen and (max-width: 1200px) {
+  main .presentation {
+    padding: 0;
+  }
+  header {
+    padding: 0;
+  }
+  nav {
+    flex-direction: column;
+    padding-top: 15px;
+    height: 335px;
+  }
+  nav .navMobile {
+    padding: 0 50px 15px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1803921569);
+  }
+  nav .navigation {
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+  }
+  nav .navigation ul {
+    flex-direction: column;
+  }
+  nav .navigation ul:first-child {
+    margin-top: 10px;
+  }
+  nav .navigation ul li a {
+    margin: 10px 0 10px 0;
+    font-size: 16px;
+  }
+  nav .navigation ul:first-child li {
+    margin: 0;
+  }
+  nav .navigation ul:last-child li {
+    margin: 0;
+  }
+  nav .iconMenuMobile {
+    display: block;
+    width: 25px;
+  }
+  .page_home {
+    padding-top: 0;
+  }
+  .page_home .presentation {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+  .page_home .presentation .left,
+  .page_home .presentation .right {
+    width: 100%;
+  }
+  .page_home .presentation .left {
+    padding: 32px 18px 48px 18px;
+  }
+  .page_home .presentation .left p {
+    margin-bottom: 32px;
+  }
+  .page_home .presentation .left a {
+    width: 100%;
+    text-align: center;
+  }
+  .page_home .presentation .right p {
+    margin: 4px 26px 0 0;
+  }
+  .page_auth .auth {
+    display: flex;
+    flex-direction: column;
+  }
+  .page_auth .auth .right,
+  .page_auth .auth .left {
+    width: 100%;
+  }
+  .page_auth .auth .left {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: -moz-fit-content;
+    height: fit-content;
+    margin-bottom: 100px;
+  }
+  .page_auth .auth .left h2 {
+    margin-bottom: 56px;
+  }
+  .page_auth .auth .left form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+  .page_auth .auth .left form label {
+    color: #a6a6a6;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .page_auth .auth .left form input[type="text"],
+  .page_auth .auth .left form input[type="email"],
+  .page_auth .auth .left form input[type="password"] {
+    height: 50px;
+    width: 322px;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+  }
+  .page_auth .auth .left form input[type="submit"] {
+    width: 322px;
+  }
+  .page_auth .auth .left .alreadyRegistered {
+    display: flex;
+    font-family: "Inter", sans-serif;
+    margin-top: 40px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #292929;
+  }
+  .page_auth .auth .left .alreadyRegistered a {
+    margin-left: 4px;
+    text-decoration: underline;
+  }
+  .page_auth .auth .right {
+    height: 462px;
+  }
+  .page_auth .auth .right img {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 462px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .latestAddition {
+    background-color: #faf9f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 0 64px 0;
+  }
+  .latestAddition .container {
+    padding: 35px 0 0 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .latestAddition #btn-style-1 {
+    display: none;
+  }
+  .firstTitle {
+    font-size: 30px;
+  }
+  .secondeTitle {
+    font-weight: 400;
+    font-size: 28px;
+  }
+  .card-style-1 img {
+    width: 160px;
+    height: 160px;
+  }
+  .card-style-1 figcaption {
+    background-color: #fff;
+    width: 160px;
+    height: 100px;
+    border-radius: 0 0 10px 10px;
+    padding: 16px 11px 18px 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-style-1 figcaption div h3 {
+    font-size: 13px;
+    margin-bottom: 5.5px;
+  }
+  .card-style-1 figcaption div p {
+    font-size: 11px;
+  }
+  .card-style-1 figcaption p {
+    font-size: 8px;
+  }
+  .howItWorks {
+    padding: 48px 20px;
+  }
+  .howItWorks h2 {
+    margin-bottom: 16px;
+  }
+  .howItWorks .subtitle {
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+  }
+  .howItWorks .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px 0;
+  }
+  .howItWorks .container div {
+    width: 100%;
+    height: 139px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 18px;
+    max-width: 500px;
+  }
+  .howItWorks a {
+    width: 100%;
+    text-align: center;
+    max-width: 500px;
+  }
+  .ourValues {
+    padding-bottom: 32px;
+  }
+  .ourValues img {
+    height: 430px;
+  }
+  .ourValues .container {
+    padding: 33px 20px 0 20px;
+    max-width: 392px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ourValues .container h2 {
+    margin-bottom: 35px;
+  }
+  .ourValues .container p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .ourValues .container .signature {
+    margin-top: 28px;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+  .ourValues svg {
+    margin-top: 47px;
+    position: inherit;
+    align-self: center;
+    bottom: 0;
+    right: 0;
+  }
+  footer {
+    background-color: #fff;
+    height: -moz-fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 31px 0 10px 0;
+  }
+  footer ul {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  footer ul li {
+    margin-left: 0;
+    margin-bottom: 21px;
+  }
+  .page_book {
+    padding: 55px 20px 55px 20px;
+  }
+  .page_book .booksOnExchange h2 {
+    margin-bottom: 28px;
+  }
+  .page_book .booksOnExchange .part-Title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .page_book .booksOnExchange .part-Title .input {
+    width: 100%;
+  }
+  .page_book .booksOnExchange .part-Title .input input {
+    width: 100%;
+  }
+  .page_singleBook .book {
+    flex-direction: column-reverse;
+  }
+  .page_singleBook .book .right,
+  .page_singleBook .book .left {
+    width: 100%;
+  }
+  .page_singleBook .book .right {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 40px 20px 80px 20px;
+    background-color: #faf9f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .page_singleBook .book .right h2 {
+    margin-bottom: 16px;
+  }
+  .page_singleBook .book .right div .author {
+    color: #a6a6a6;
+    font-weight: 400;
+    font-size: 16px;
+    padding-bottom: 32px;
+  }
+  .page_singleBook .book .right div .dash {
+    background-color: #a6a6a6;
+    height: 1px;
+    width: 27px;
+  }
+  .page_singleBook .book .right h3 {
+    margin: 32px 0 16px 0;
+    font-weight: 600;
+    font-size: 8px;
+  }
+  .page_singleBook .book .right p {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .page_singleBook .book .right figure {
+    display: flex;
+    padding: 6px 17px 6px 6px;
+    align-items: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 114px;
+    height: 60px;
+    background-color: #fff;
+    margin-bottom: 40px;
+  }
+  .page_singleBook .book .right figure figcaption {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+  }
+  .page_singleBook .book .right figure img {
+    width: 50px;
+    height: 50px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 12px;
+  }
+  .page_singleBook .book .left {
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page_singleBook .book .left .cover {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 375px;
+  }
+}
+
+.formUpdateProfilePicture {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 157px;
+}
+.formUpdateProfilePicture a {
+  align-self: flex-start;
+}
+.formUpdateProfilePicture input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #edf2f6;
+  border: 1px solid #f0f0f0;
+  border-radius: 45px;
+}
+
+@media screen and (max-width: 830px) {
+  .page_book {
+    padding: 55px 20px 55px 20px;
+  }
+  .page_book .booksOnExchange h2 {
+    margin-bottom: 28px;
+  }
+  .page_book .booksOnExchange .part-Title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+  .page_book .booksOnExchange .part-Title .input {
+    width: 100%;
+  }
+  .page_book .booksOnExchange .part-Title .input input {
+    width: 100%;
+  }
+  .page_book .booksOnExchange .container {
+    justify-content: center;
+    grid-template-columns: repeat(2, 160px);
+    gap: 15px;
+  }
+}
+.page_myAccount {
+  background-color: #faf9f7;
+}
+.page_myAccount .wrapperPage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 90px 150px 102px 150px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 32px;
+}
+.page_myAccount h2 {
+  margin-bottom: 40px;
+}
+.page_myAccount .profil {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 48px 0 36px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.page_myAccount .profil .image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page_myAccount .profil .image img {
+  width: 135px;
+  height: 135px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.page_myAccount .profil .image a {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
+.page_myAccount .profil .dash {
+  background-color: #f5f3ef;
+  height: 1px;
+  width: 242px;
+  margin: 48px 0;
+}
+.page_myAccount .profil .name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page_myAccount .profil .name h3 {
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-weight: 400;
+}
+.page_myAccount .profil .name .member {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+  margin: 11px 0 21px 0;
+}
+.page_myAccount .profil .name .library h4 {
+  font-family: "Inter";
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.page_myAccount .profil .name .library div {
+  display: flex;
+  align-items: center;
+}
+.page_myAccount .profil .name .library div p {
+  margin-left: 5px;
+}
+.page_myAccount .personalInfo {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  padding: 40px 32px 48px 32px;
+}
+.page_myAccount .personalInfo h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 22px;
+}
+.page_myAccount .personalInfo form label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_myAccount .personalInfo form input[type="text"],
+.page_myAccount .personalInfo form input[type="email"],
+.page_myAccount .personalInfo form input[type="password"] {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background-color: #edf2f6;
+  margin: 10px 0 32px 0;
+}
+.page_myAccount .personalInfo form #authError {
+  width: 100%;
+}
+.page_myAccount .containerComment {
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+.page_myAccount .containerComment .summary {
+  padding: 33px 66px 8px 66px;
+  font-family: Inter;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 9.68px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid #f5f3ef;
+}
+.page_myAccount .containerComment .summary ul li:nth-child(5) {
+  margin-left: 20px;
+}
+.page_myAccount .containerComment .addBook {
+  background-color: #edf2f6;
+  color: #a6a6a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+
+}
+.page_myAccount .containerComment .addBook p {
+  margin-left: 20px;
+}
+.page_myAccount .containerComment .card-style-2 {
+  padding: 26px 66px;
+}
+.page_myAccount .containerComment .card-style-2:last-child {
+  border-radius: 0 0 20px 20px;
+}
+.page_myAccount .containerComment .card-style-2:nth-of-type(2n + 1) {
+  background-color: #ffffff;
+}
+.page_myAccount .containerComment .card-style-2:nth-of-type(2n + 2) {
+  background-color: #edf2f6;
+}
+.page_myAccount .containerComment .card-style-2 .container img {
+  width: 78px;
+  height: 78px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.page_myAccount .containerComment .card-style-2 .container h3,
+.page_myAccount .containerComment .card-style-2 .container h4,
+.page_myAccount .containerComment .card-style-2 .container p,
+.page_myAccount .containerComment .card-style-2 .container .action a,
+.page_myAccount .containerComment .card-style-2 .container .action button {
+  font-size: 12px;
+  font-weight: 400;
+  color: #292929;
+}
+.page_myAccount .containerComment .card-style-2 .container h3 {
+  font-size: 12px;
+  font-weight: 400;
+}
+.page_myAccount .containerComment .card-style-2 .container h4 {
+  font-family: "Inter", sans-serif;
+}
+.page_myAccount .containerComment .card-style-2 .container p {
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 128px;
+}
+.page_myAccount .containerComment .card-style-2 .container .availability {
+  padding: 3.7px 13.3px;
+  border-radius: 30px;
+  font-family: "Inter", sans-serif;
+  font-size: 8.88px;
+  font-weight: 500;
+  color: #fff;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 20px;
+}
+.page_myAccount .containerComment .card-style-2 .container .availability.green {
+  background-color: #6dc5a1;
+}
+.page_myAccount .containerComment .card-style-2 .container .availability.red {
+  background-color: #c56d6d;
+}
+.page_myAccount .containerComment .card-style-2 .container .action .btn-edit {
+  margin-right: 28px;
+  text-decoration: underline;
+}
+.page_myAccount .containerComment .card-style-2 .container .action .btn-delete {
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #cb2d2d;
+}
+.page_myAccount .profil,
+.page_myAccount .personalInfo {
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.page_myAccount .card-style-2 .container,
+.page_myAccount .summary .container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+}
+
+.page_publicAccount {
+  background-color: #faf9f7;
+}
+.page_publicAccount .wrapperPage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 90px 150px 102px 150px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.page_publicAccount h2 {
+  margin-bottom: 40px;
+}
+.page_publicAccount .profil {
+  grid-column: 1/2;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 48px 0 36px 0;
+  height: 579px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.page_publicAccount .profil .image {
+  display: flex;
+  flex-direction: column;
+}
+.page_publicAccount .profil .image img {
+  width: 135px;
+  height: 135px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.page_publicAccount .profil .image button {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+}
+.page_publicAccount .profil .dash {
+  background-color: #f5f3ef;
+  height: 1px;
+  width: 242px;
+  margin: 48px 0;
+}
+.page_publicAccount .profil .name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+}
+.page_publicAccount .profil .name h3 {
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-weight: 400;
+}
+.page_publicAccount .profil .name .member {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+  margin: 11px 0 21px 0;
+}
+.page_publicAccount .profil .name .library h4 {
+  font-family: "Inter";
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.page_publicAccount .profil .name .library div {
+  display: flex;
+  align-items: center;
+}
+.page_publicAccount .profil .name .library div p {
+  margin-left: 5px;
+}
+.page_publicAccount .containerComment {
+  grid-column: 2/4;
+}
+.page_publicAccount .containerComment .summary {
+  padding: 33px 66px 8px 66px;
+  font-family: Inter;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 9.68px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid #f5f3ef;
+}
+.page_publicAccount .containerComment .summary ul li:nth-child(5) {
+  margin-left: 20px;
+}
+.page_publicAccount .containerComment .card-style-2 {
+  padding: 26px 66px;
+}
+.page_publicAccount .containerComment .card-style-2:last-child {
+  border-radius: 0 0 20px 20px;
+}
+.page_publicAccount .containerComment .card-style-2:nth-of-type(2n + 1) {
+  background-color: #ffffff;
+}
+.page_publicAccount .containerComment .card-style-2:nth-of-type(2n + 2) {
+  background-color: #edf2f6;
+}
+.page_publicAccount .containerComment .card-style-2 .container img {
+  width: 78px;
+  height: 78px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.page_publicAccount .containerComment .card-style-2 .container h3,
+.page_publicAccount .containerComment .card-style-2 .container h4,
+.page_publicAccount .containerComment .card-style-2 .container p,
+.page_publicAccount .containerComment .card-style-2 .container .action a,
+.page_publicAccount .containerComment .card-style-2 .container .action button {
+  font-size: 12px;
+  font-weight: 400;
+  color: #292929;
+}
+.page_publicAccount .containerComment .card-style-2 .container h3 {
+  font-size: 12px;
+  font-weight: 400;
+}
+.page_publicAccount .containerComment .card-style-2 .container h4 {
+  font-family: "Inter", sans-serif;
+}
+.page_publicAccount .containerComment .card-style-2 .container p {
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 128px;
+}
+.page_publicAccount .profil,
+.page_publicAccount .personalInfo {
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.page_publicAccount .card-style-2 .container,
+.page_publicAccount .summary .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+}
+
+.page_bookEdition {
+  background-color: #faf9f7;
+}
+.page_bookEdition .wrapperPage {
+  padding: 40px 150px 92px 150px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.page_bookEdition .wrapperPage a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.94px;
+  color: #a6a6a6;
+}
+.page_bookEdition h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin: 23px 0;
+}
+.page_bookEdition .infoBook {
+  display: flex;
+  background-color: #fff;
+  height: 941px;
+  border-radius: 20px;
+}
+.page_bookEdition .infoBook .formUpdatePicture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+  width: 50%;
+}
+.page_bookEdition .infoBook .formUpdatePicture a {
+  align-self: flex-start;
+  margin-left: 100px;
+}
+.page_bookEdition .infoBook .formUpdatePicture input {
+  margin-top: 50px;
+  width: 200px;
+}
+.page_bookEdition .infoBook .left,
+.page_bookEdition .infoBook .right {
+  width: 50%;
+  padding: 56px 50px 68px 50px;
+}
+.page_bookEdition .infoBook .left {
+  display: flex;
+  justify-content: center;
+}
+.page_bookEdition .infoBook .left .container {
+  width: 100%;
+  max-width: 488px;
+  display: flex;
+  flex-direction: column;
+}
+.page_bookEdition .infoBook .left p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+  margin-bottom: 10px;
+}
+.page_bookEdition .infoBook .left img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 488px;
+}
+.page_bookEdition .infoBook .left .btnEditPage {
+  margin-top: 23px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: transparent;
+  text-decoration: underline;
+  border: none;
+  align-self: flex-end;
+  color: #000;
+}
+.page_bookEdition .infoBook .right form label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_bookEdition .infoBook .right form input[type="text"],
+.page_bookEdition .infoBook .right form input[type="email"],
+.page_bookEdition .infoBook .right form input[type="password"],
+.page_bookEdition .infoBook .right form select,
+.page_bookEdition .infoBook .right form textarea {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background-color: #edf2f6;
+  margin: 10px 0 32px 0;
+}
+.page_bookEdition .infoBook .right form textarea {
+  height: 356px;
+}
+.page_bookEdition .infoBook .right form input[type="submit"] {
+  width: 322px;
+}
+
+.page_messaging .wrapperPage {
+  /* height: 500px; */
+}
+
+.page_messaging .wrapperPage {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.page_messaging .message {
+  display: flex;
+  padding: 0 150px;
+}
+.page_messaging .message .left {
+  width: 308px;
+  background-color: #faf9f7;
+  padding: 55px 0;
+}
+.page_messaging .message .left h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 27px;
+  margin-left: 34px;
+}
+.page_messaging .message .left .active {
+  background-color: #ffffff;
+}
+.page_messaging .message .left figure {
+  display: flex;
+  padding: 21px 42px 21px 34px;
+}
+.page_messaging .message .left figure img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.page_messaging .message .left figure figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.page_messaging .message .left figure figcaption .up {
+  display: flex;
+  justify-content: space-between;
+}
+.page_messaging .message .left figure figcaption .up h3 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.page_messaging .message .left figure figcaption .up .datetime {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+.page_messaging .message .left figure figcaption p {
+  color: #a6a6a6;
+  font-size: 12px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 172px;
+}
+.page_messaging .message .right {
+  width: 100%;
+  padding: 35px 0 98px 44px;
+}
+.page_messaging .message .right .return {
+  display: none;
+}
+.page_messaging .message .right .user {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.page_messaging .message .right .user img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+.page_messaging .message .right .user h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.page_messaging .message .right .messageArea {
+  margin-top: 29px;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.page_messaging .message .right .messageArea .scrool {
+  padding: 50px 0 50px 0;
+  overflow: scroll;
+}
+.page_messaging .message .right .messageArea .messageContact {
+  display: flex;
+  flex-direction: column;
+  margin-top: 29px;
+}
+.page_messaging .message .right .messageArea .messageContact .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+}
+.page_messaging .message .right .messageArea .messageContact .info img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right: 6px;
+}
+.page_messaging .message .right .messageArea .messageContact .info p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_messaging .message .right .messageArea .messageContact .contentMessage {
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 10px 18px;
+  max-width: 500px;
+}
+.page_messaging .message .right .messageArea .messageUser {
+  margin-top: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.page_messaging .message .right .messageArea .messageUser .info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+}
+.page_messaging .message .right .messageArea .messageUser .info img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right: 6px;
+}
+.page_messaging .message .right .messageArea .messageUser .info p {
+  font-size: 12px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_messaging .message .right .messageArea .messageUser .contentMessage {
+  background-color: #edf2f6;
+  border-radius: 3px;
+  padding: 10px 18px;
+  max-width: 500px;
+}
+.page_messaging .message .right .editMessage form {
+  padding-top: 30px;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+.page_messaging .message .right .editMessage input[type="text"] {
+  width: 100%;
+  height: 49px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  margin-right: 21px;
+  padding: 0 42px;
+}
+.page_messaging
+  .message
+  .right
+  .editMessage
+  input[type="text"]::-moz-placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_messaging .message .right .editMessage input[type="text"]::placeholder {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #a6a6a6;
+}
+.page_messaging .message .right .editMessage input[type="submit"].btn-style-1 {
+  height: 49px;
+  padding: 0 36px;
+}
+
+@media screen and (max-width: 1200px) {
+  .page_myAccount .personalInfo form input[type="submit"] {
+    width: 100%;
+  }
+  .page_myAccount .wrapperPage {
+    padding: 78px 20px 62px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 32px;
+  }
+  .page_myAccount .profil {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .page_myAccount .personalInfo {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .page_myAccount .containerComment {
+    grid-column: 1;
+    grid-row: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page_myAccount .containerComment .summary {
+    display: none;
+  }
+  .page_myAccount .containerComment .card-style-2 {
+    padding: 57px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  .page_myAccount .containerComment .card-style-2:last-child {
+    border-radius: 20px;
+  }
+  .page_myAccount .containerComment .card-style-2:nth-of-type(2n + 1) {
+    background-color: #ffffff;
+  }
+  .page_myAccount .containerComment .card-style-2:nth-of-type(2n + 2) {
+    background-color: #ffffff;
+  }
+  .page_myAccount .containerComment .card-style-2 .container {
+    display: grid;
+    grid-template-columns: 97px 123px;
+    grid-template-rows: 17px 33px 50px 105px 19px;
+    align-items: flex-start;
+  }
+  .page_myAccount .containerComment .card-style-2 .container h3 {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+  .page_myAccount .containerComment .card-style-2 .container h4 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .page_myAccount .containerComment .card-style-2 .container p {
+    width: 100%;
+    grid-row: 4/5;
+    grid-column: 1/3;
+  }
+  .page_myAccount .containerComment .card-style-2 .container .availability {
+    margin: 0;
+    grid-row: 3/4;
+    grid-column: 2/3;
+  }
+  .page_myAccount .containerComment .card-style-2 .container .action {
+    grid-row: 5/6;
+    grid-column: 1/3;
+  }
+  .page_publicAccount .wrapperPage {
+    padding: 78px 20px 62px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .page_publicAccount .profil {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .page_publicAccount .containerComment {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .page_publicAccount .containerComment .summary {
+    display: none;
+  }
+  .page_publicAccount .containerComment .card-style-2 {
+    padding: 57px;
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  .page_publicAccount .containerComment .card-style-2:last-child {
+    border-radius: 20px;
+  }
+  .page_publicAccount .containerComment .card-style-2:nth-of-type(2n + 1) {
+    background-color: #ffffff;
+  }
+  .page_publicAccount .containerComment .card-style-2:nth-of-type(2n + 2) {
+    background-color: #ffffff;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container {
+    display: grid;
+    grid-template-columns: 97px 123px;
+    grid-template-rows: 17px 33px 50px 55px;
+    align-items: flex-start;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container h3 {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    position: relative;
+    top: 25px;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container h4 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    position: relative;
+    top: 25px;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container p {
+    width: 100%;
+    grid-row: 4/5;
+    grid-column: 1/3;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container .availability {
+    margin: 0;
+    grid-row: 3/4;
+    grid-column: 2/3;
+  }
+  .page_publicAccount .containerComment .card-style-2 .container .action {
+    grid-row: 5/6;
+    grid-column: 1/3;
+  }
+  .page_bookEdition .wrapperPage {
+    padding: 54px 0 80px 0;
+  }
+  .page_bookEdition .wrapperPage a {
+    margin-left: 20px;
+  }
+  .page_bookEdition h2 {
+    margin-left: 20px;
+  }
+  .page_bookEdition .infoBook {
+    flex-direction: column;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .page_bookEdition .infoBook .left,
+  .page_bookEdition .infoBook .right {
+    width: 100%;
+    padding: 56px 20px 0 20px;
+  }
+  .page_bookEdition .infoBook .left img {
+    height: 400px;
+  }
+  .page_bookEdition .infoBook .left button {
+    font-size: 16px;
+  }
+  .page_bookEdition .infoBook .right form input[type="submit"] {
+    width: 100%;
+  }
+  .page_messaging .message {
+    padding: 0;
+  }
+  .page_messaging .message .left {
+    width: 100%;
+  }
+  .page_messaging .message .left .active {
+    background-color: transparent;
+  }
+  .page_messaging .message .left figure {
+    width: 100%;
+    border-bottom: 1px solid #fff;
+  }
+  .page_messaging .message .left figure figcaption {
+    width: 100%;
+  }
+  .page_messaging .message .left figure figcaption .up {
+    width: 100%;
+  }
+  .page_messaging .message .left figure figcaption p {
+    width: 75%;
+  }
+  .page_messaging .message .right {
+    padding: 23px 20px 42px 20px;
+  }
+  .page_messaging .message .right .return {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a6a6a6;
+    margin-bottom: 11px;
+  }
+  .page_messaging .message .right .messageArea {
+    height: 48vh;
+  }
+  .page_messaging .message .right .messageArea .scrool {
+    padding: 50px 0 73px 0;
+    margin-bottom: 20px;
+  }
+  .page_messaging .message .right .editMessage form {
+    flex-direction: column;
+  }
+  .page_messaging .message .right .editMessage input[type="text"] {
+    margin-right: 0;
+    margin-bottom: 11px;
+  }
+  .page_messaging
+    .message
+    .right
+    .editMessage
+    input[type="submit"]#btn-style-1 {
+    width: 100%;
+  }
+  .containerMessageDisplayNone {
+    display: none;
+  }
+}
+@media screen and (max-width: 530px) {
+  .page_messaging .wrapperPage .message .left figure figcaption .up {
+    width: 85%;
+  }
+}
+
+.page_errorPage {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.page_errorPage div {
+  text-align: center;
+}
+
+.page_errorPage div p {
+  margin: 20px 0;
+}
+
+.page_errorPage div a {
+  text-decoration: underline;
+  color: #00ac66;
+}
+.errorPageBookSearch {
+  width: 100%;
+  grid-column: 1 / 5;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.numberNotification {
+  background-color: #292929;
+  border-radius: 6.75px;
+  padding: 5px 5px;
+  color: #F5F3EF;
+  font-family: Inter;
+  font-size: 8.25px;
+  font-weight: 700;
+  text-align: center;
+  margin-left: 5px;
+}
+
+/* Class de style uniquement */
+
+.navBarHeightResponsive {
+  height: 82px
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.navigationStyleActive {
+  font-weight: 600;
+}
+
+.justifyHeight {
+  justify-content: center; 
+  height: fit-content;
+}
+
+.displayFlexAlign {
+  display: flex; 
+  flex-direction: column; 
+  align-items: stretch;
+}
+
+.alignSelf {
+  align-self: center;
+}
+
+.alignSelfMargin {
+  align-self: center; 
+  margin-top: 20px;
+}

@@ -233,4 +233,41 @@ class UserController
             'memberSince' => $memberSince
         ]);
     }
+
+    /**
+     * Affiche la page publicAccount.
+     * @return void
+     */
+    public function showPublicAccount(): void
+    {
+        // Récupère l'id de l'utilisateur connecté.
+        $myUserId = filter_var($_SESSION["idUser"], FILTER_VALIDATE_INT);
+
+        // Récupère l'id de l'utilisateur visité.
+        $userId = (int)Utils::request("id", -1);
+
+        // On récupère les informations de l'utilisateur.
+        $user = $this->userManager->getUserById($userId);
+
+        if (!$user) {
+            throw new Exception("L'utilisateur demander n'existe pas.");
+        }
+
+        // On récupère les livres de l'utilisateur
+        $booksUser = $this->bookManager->getBooksWithUserId($userId);
+
+        // On récupère le nomnbre de jours depuis l'inscription de l'utilisateur.
+        $numberOfDay = $user->getRegistrationDate();
+        $memberSince = Utils::memberSince($numberOfDay);
+
+        // Description de la page home (SEO).
+        $description = "Profil de {$user->getPseudo()}";
+
+        $view = new View($user->getPseudo(), $description, "page_publicAccount");
+        $view->render("publicAccount", [
+            'user' => $user,
+            'booksUser' => $booksUser,
+            'memberSince' => $memberSince
+        ]);
+    }
 }

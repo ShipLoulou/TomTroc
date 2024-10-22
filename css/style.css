@@ -1262,7 +1262,7 @@ footer ul li {
   align-items: center;
   margin-bottom: 45px;
 }
-.page_publicAccount .profil .name h3 {
+.page_publicAccount .profil .name h2 {
   font-family: "Playfair Display";
   font-size: 24px;
   font-weight: 400;
@@ -1273,7 +1273,7 @@ footer ul li {
   color: #a6a6a6;
   margin: 11px 0 21px 0;
 }
-.page_publicAccount .profil .name .library h4 {
+.page_publicAccount .profil .name .library h3 {
   font-family: "Inter";
   font-size: 8px;
   font-weight: 600;

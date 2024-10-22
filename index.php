@@ -46,6 +46,11 @@ try {
             $userController = new UserController();
             $userController->showPublicAccount();
             break;
+
+        case 'bookEdition':
+            $bookController = new BookController();
+            $bookController->showBookEdition();
+            break;
         
         default:
             throw new Exception("La page demandée n'existe pas.");

@@ -99,4 +99,139 @@ class BookController
             'userId' => $userId
         ]);
     }
+
+    /**
+     * Affiche la page bookEdition.
+     * Permet d'ajouter un nouveau livre ou de le mettre à jour.
+     * @return void
+     */
+    public function showBookEdition()
+    {
+        // Récupère l'id de l'utilisateur.
+        $userId = filter_var($_SESSION['idUser'], FILTER_VALIDATE_INT);
+
+        // Supprime des données $_SESSION 'error' et 'verificationInfoUser' à chaque actualiation.
+        unset($_SESSION['error']);
+        unset($_SESSION['verificationInfoUser']);
+
+        // Récupère les données du formualaires.
+        $title = filter_var(Utils::request("title"), FILTER_SANITIZE_STRING);
+        $author = filter_var(Utils::request("author"), FILTER_SANITIZE_STRING);
+        $description = Utils::request("description");
+        $availability = Utils::request("availability");
+        $bookPicture = $_FILES["bookPicture"];
+
+        // Transforme la valeur du champs dispobibilité ($availability) : TRUE => 1, FALSE => 0.
+        if ($availability) {
+            $availabilityBool = match ($availability) {
+                'available' => 1,
+                'notAvailable' => 0,
+            };
+        }
+
+        // Renomme et télécharge l'image inséré dans le champs $bookPicture.
+        if ($bookPicture && !empty($bookPicture['name'])) {
+            $allowedExtensions = ['jpg', 'png', 'jpeg', 'webp'];
+            $file_extension = pathinfo($bookPicture['name'], PATHINFO_EXTENSION);
+
+            $file_basename = pathinfo($bookPicture['name'], PATHINFO_FILENAME);
+
+            if (!in_array($file_extension, $allowedExtensions)) {
+                throw new Exception("Type de fichier invalide");
+            }
+
+            $new_image_name = $file_basename . '_bookPicture_' . $userId . '_' . date("Ymd_His") . '.' . $file_extension;
+            $target_directory = 'images/bookPicture/';
+            $targer_path = $target_directory . $new_image_name;
+            move_uploaded_file($bookPicture['tmp_name'], $targer_path);
+        } else {
+            // Image émis par défault si aucune image n'ai importée.
+            $targer_path = 'images/static/bookPictureDefault.webp';
+        }
+
+        // Gestion des messages d'erreur.
+        $errorMessage = null;
+
+        $outputError = match (true) {
+            empty($title)
+            || empty($author)
+            || empty($description)
+            || $availabilityBool === null  => "Tous les champs sont obligatoires",
+            strlen($description) < 20  => "Le pseudo doit avoir au minimun 20 caractères",
+            default => null
+        };
+
+        $errorMessage = $outputError;
+
+        if ($_POST['formulaireSend'] === 'ok') {
+            if ($errorMessage !== null) {
+                $_SESSION['error'] = $errorMessage;
+            } else {
+                unset($_SESSION['error']);
+                $_SESSION['verificationInfoUser'] = true;
+            }
+        }
+
+        if ($_GET['id']) {
+            // Récupère l'id du livre à modifier
+            $bookId = (int)$_GET['id'];
+            // Récupère les informations du livre à modifier
+            $book = $this->bookManager->getBookById($bookId);
+        }
+
+        if ($_SESSION['verificationInfoUser'] === true) {
+
+            if ($_GET['id']) {
+                // Modifie les informations du livre.
+                $updateBook = new Book([
+                    'title' => strip_tags($title),
+                    'author' => strip_tags($author),
+                    'description' => strip_tags($description),
+                ]);
+
+                $this->bookManager->updateBook($updateBook, $bookId, $availabilityBool);
+            } else {
+                // Créer un livre.
+                $book = new Book([
+                    'picture' => $targer_path,
+                    'title' => strip_tags($title),
+                    'author' => strip_tags($author),
+                    'description' => strip_tags($description),
+                    'user_id' => strip_tags($userId)
+                ]);
+                $this->bookManager->addBook($book, $availabilityBool);
+            }
+
+            Utils::redirect("myAccount");
+        }
+
+        // Renomme et télécharge l'image inséré dans le champs $_FILES.
+        if ($_FILES) {
+            $allowedExtensions = ['jpg', 'png', 'jpeg', 'webp'];
+            $file_extension = pathinfo($_FILES['updatePicture']['name'], PATHINFO_EXTENSION);
+
+            $file_basename = pathinfo($_FILES['updatePicture']['name'], PATHINFO_FILENAME);
+
+            if (!in_array($file_extension, $allowedExtensions)) {
+                throw new Exception("Type de fichier invalide");
+            }
+
+            $new_image_name = $file_basename . '_bookPicture_' . $userId . '_' . date("Ymd_His") . '.' . $file_extension;
+
+            $target_directory = 'images/bookPicture/';
+            $targer_path = $target_directory . $new_image_name;
+            $test = move_uploaded_file($_FILES['updatePicture']['tmp_name'], $targer_path);
+            $this->bookManager->updateBookPicture($targer_path, $bookId);
+
+            Utils::redirect("bookEdition&id={$_GET['id']}");
+        }
+
+        // Description de la page home (SEO).
+        $description = "Modification du livre.";
+
+        $view = new View("Edition livre", $description, "page_bookEdition");
+        $view->render("bookEdition", [
+            'book' => $book
+        ]);
+    }
 }

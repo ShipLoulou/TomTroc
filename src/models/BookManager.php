@@ -90,4 +90,68 @@ class BookManager extends AbstractEntityManager
         }
         return $books;
     }
+
+    /**
+     * Ajouter un livre dans le base de données
+     * @param Book $book : objet contenent les informations du livre à ajouter
+     * @param int $availabilityBool : disponibilité du livre (TRUE => 1, FALSE => 0)
+     * @return void
+     */
+    public function addBook(Book $book, $availabilityBool): void
+    {
+        $sql = "INSERT INTO book (picture, title, author, description, availability, user_id) VALUES (:picture, :title, :author, :description, :availability, :user_id)";
+        $this->db->query($sql, [
+            'picture' => $book->getPicture(),
+            'title' => $book->getTitle(),
+            'author' => $book->getAuthor(),
+            'description' => $book->getDescription(),
+            'availability' => $availabilityBool,
+            'user_id' => $book->getUserId()
+        ]);
+    }
+
+    /**
+     * Mets à jours les informations d'un livre.
+     * @param Book $book : objet contenent les informations du livre à modifier
+     * @param int $book : id du livre à modifier
+     * @param int $availabilityBool : disponibilité du livre (TRUE => 1, FALSE => 0)
+     * @return void
+     */
+    public function updateBook(Book $book, int $bookId, int $availabilityBool): void
+    {
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description, availability = :availability WHERE book_id = :id";
+        $this->db->query($sql, [
+            'title' => $book->getTitle(),
+            'author' => $book->getAuthor(),
+            'description' => $book->getDescription(),
+            'availability' => $availabilityBool,
+            'id' => $bookId
+        ]);
+    }
+
+    /**
+     * Modifie l'image du livre
+     * @param string $picture : chemin vers l'image
+     * @param int $bookId : id du livre à modifer l'image
+     * @return void
+     */
+    public function updateBookPicture(string $picture, int $bookId): void
+    {
+        $sql = "UPDATE book SET picture = :picture WHERE book_id = :id";
+        $this->db->query($sql, [
+            'picture' => $picture,
+            'id' => $bookId
+        ]);
+    }
+
+    /**
+     * Supprime un livre.
+     * @param int $idDelete : id du livre à supprimer.
+     * @return void
+     */
+    public function deleteBook(int $idDelete): void
+    {
+        $sql = "DELETE FROM book WHERE book_id = :id";
+        $result = $this->db->query($sql, ['id' => $idDelete]);
+    }
 }

@@ -24,7 +24,8 @@
                         />
                         <figcaption><?= $user->getPseudo() ?></figcaption>
                     </a>
-                <?php }} ?>
+                <?php }
+                    } ?>
             </figure>
         </div>
         <a 

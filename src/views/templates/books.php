@@ -61,7 +61,8 @@
                     </figcaption>
                 </figure>
             </a>
-        <?php }} ?>
+        <?php }
+            } ?>
 
     </div>
 </section>

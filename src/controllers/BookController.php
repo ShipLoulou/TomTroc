@@ -14,12 +14,12 @@ class BookController
         $this->bookManager = new BookManager();
         $this->userManager = new UserManager();
     }
-    
+
     /**
      * Affiche la page d'accueil.
      * @return void
      */
-    public function showHome() : void
+    public function showHome(): void
     {
         // Récupère les 4 derniers livres publiés.
         $books = $this->bookManager->getLastsBooks();

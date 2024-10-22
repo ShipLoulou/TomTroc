@@ -18,20 +18,20 @@
                                 <h3><?= $user->getPseudo() ?></h3>
                                 <?php
                                     // Date d'envoie du dernier message.
-                                    $dateLastMessage= new DateTime($interlocutor['lastMessage']->getSendingDatetime());
-                                    $onlyDateLastMessage= $dateLastMessage->format('Y-m-d');
+                                    $dateLastMessage = new DateTime($interlocutor['lastMessage']->getSendingDatetime());
+                        $onlyDateLastMessage = $dateLastMessage->format('Y-m-d');
 
-                                    // Date actuelle.
-                                    $currentDate = new DateTime();
-                                    $onlyDateCurrentDate= $currentDate->format('Y-m-d');
+                        // Date actuelle.
+                        $currentDate = new DateTime();
+                        $onlyDateCurrentDate = $currentDate->format('Y-m-d');
 
-                                    if ($onlyDateLastMessage === $onlyDateCurrentDate) {
-                                        $date= $dateLastMessage->format('H:i');
-                                    } else {
-                                        $date= $dateLastMessage->format('d.m');
-                                    }
-                                    echo "<div class='datetime'>{$date}</div>";
-                                ?>
+                        if ($onlyDateLastMessage === $onlyDateCurrentDate) {
+                            $date = $dateLastMessage->format('H:i');
+                        } else {
+                            $date = $dateLastMessage->format('d.m');
+                        }
+                        echo "<div class='datetime'>{$date}</div>";
+                        ?>
                             </div>
                             <?php
                         echo "<p>{$interlocutor['lastMessage']->getContent()}</p>";
@@ -39,7 +39,9 @@
                             </figcaption>
                         </figure>
                     </a>
-                <?php }}} ?>
+                <?php }
+                    }
+            } ?>
             </div>
             <div class="right">
             <!-- Balise <a> est utilisé uniquement sur mobile -->

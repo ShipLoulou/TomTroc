@@ -14,7 +14,11 @@ class MessageController
         $this->conversationManager = new ConversationManager();
         $this->messageManager = new MessageManager();
     }
-    
+
+    /**
+     * Affiche la page messaging.
+     * @return void
+     */
     public function showMessaging()
     {
         // On vérifie que l'utilisateur est connecté.

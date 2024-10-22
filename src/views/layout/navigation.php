@@ -113,14 +113,14 @@ if ($userId) {
                     <a 
                     href="index.php?action=home"
                     aria-label="Redirige vers la page d'accueil."
-                    class="<?= $_REQUEST["action"] === "home" ? 'navigationStyleActive': '' ?>"
+                    class="<?= $_REQUEST["action"] === "home" ? 'navigationStyleActive' : '' ?>"
                     > Accueil </a>
                 </li>
                 <li>
                     <a 
                     href="index.php?action=books"
                     aria-label="Redirige vers la page contenant tous les livres à l'échanges."
-                    class="<?= $_REQUEST["action"] === "books" ? 'navigationStyleActive': '' ?>"
+                    class="<?= $_REQUEST["action"] === "books" ? 'navigationStyleActive' : '' ?>"
                     > Nos livres à l'échange 
                     </a>
                 </li>
@@ -128,14 +128,14 @@ if ($userId) {
             <ul>
                 <li>
                     <a 
-                    href=<?php $urlMessage = Utils::navigationMessagePart(); 
-                    if (!$urlMessage) {
-                        echo 'index.php?action=home';
-                    } else {
-                        echo $urlMessage;
-                    } ?>
+                    href=<?php $urlMessage = Utils::navigationMessagePart();
+if (!$urlMessage) {
+    echo 'index.php?action=home';
+} else {
+    echo $urlMessage;
+} ?>
                     aria-label="Redirige vers vos messages si vous être connecté."
-                    class="<?= $_REQUEST["action"] === "messaging" ? 'navigationStyleActive': '' ?>"
+                    class="<?= $_REQUEST["action"] === "messaging" ? 'navigationStyleActive' : '' ?>"
                     >
                         <svg
                         width="15"
@@ -152,7 +152,7 @@ if ($userId) {
                         </svg>
                         Messagerie
                         <?php
-                        if($userId && $updateInfoMyUser->getUnreadMessage() !== 0) { ?>
+    if($userId && $updateInfoMyUser->getUnreadMessage() !== 0) { ?>
                             <div class='numberNotification'> <?= $updateInfoMyUser->getUnreadMessage() ?></div>
                         <?php } ?>
                     </a>
@@ -161,7 +161,7 @@ if ($userId) {
                     <a 
                     href='index.php?action=myAccount'
                     aria-label="Redirige vers votre compte si vous être connecté."
-                    class="<?= $_REQUEST["action"] === "myAccount" ? 'navigationStyleActive': '' ?>"
+                    class="<?= $_REQUEST["action"] === "myAccount" ? 'navigationStyleActive' : '' ?>"
                     >
                         <svg
                         id="fi_2105556"

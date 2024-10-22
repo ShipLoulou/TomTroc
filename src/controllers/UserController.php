@@ -117,7 +117,7 @@ class UserController
         $view->render("logIn");
     }
 
-        
+
     /**
      * Déconnexion de l'utilisateur.
      * @return void

@@ -19,4 +19,4 @@ Pour se connecter, soit :
 - se créer un compte directement à travers le formulaire d'inscription
 - se connecter avec le compte de test : le login est "exemple@exemple.com" et le mot de passe "password"
 
-Ce projet a été réalisé avec PHP 8.2. Bien que d'autres versions de PHP puissent fonctionner, il n'est pas garanti que le projet fonctionne avec des versions antérieures.
+Ce projet a été réalisé avec PHP 8.4. Bien que d'autres versions de PHP puissent fonctionner, il n'est pas garanti que le projet fonctionne avec des versions antérieures.

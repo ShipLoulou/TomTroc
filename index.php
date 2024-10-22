@@ -62,5 +62,6 @@ try {
             break;
     }
 } catch (Exception $e) {
-    echo $e->getMessage();
+    $errorView = new View('Erreur', 'Error', "page_errorPage");
+    $errorView->render('errorPage', ['errorMessage' => $e->getMessage()]);
 }

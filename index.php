@@ -36,6 +36,11 @@ try {
             $userController = new UserController();
             $userController->logOut();
             break;
+
+        case 'myAccount':
+            $userController = new UserController();
+            $userController->showMyAccount();
+            break;
         
         default:
             throw new Exception("La page demandée n'existe pas.");

@@ -20,7 +20,7 @@ class BookManager extends AbstractEntityManager
         }
         return $books;
     }
-    
+
     /**
      * Récupère les 4 derniers livres ajouté.
      * @return array : un tableau d'objets Book
@@ -69,6 +69,25 @@ class BookManager extends AbstractEntityManager
             $books[] = new Book($book);
         }
 
+        return $books;
+    }
+
+    /**
+     * Récupère les livres d'un utilisateur.
+     * @param int $userId : id de l'utilisateur.
+     * @return ?array : un tableau d'objets Book ou null si l'objet n'existe pas
+     */
+    public function getBooksWithUserId(int $userId): ?array
+    {
+        $sql = "SELECT * FROM book WHERE user_id = :id";
+        $result = $this->db->query($sql, [
+            'id' => $userId
+        ]);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
         return $books;
     }
 }

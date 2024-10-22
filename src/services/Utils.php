@@ -30,6 +30,43 @@ class Utils
     }
 
     /**
+     * Vérifie que l'utilisateur est connecté.
+     * @return void
+     */
+    public static function checkIfUserIsConnected(): void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("logIn");
+        }
+    }
+
+    /**
+     * Permet d'associer une valeur (jour, semaine, mois, année) en fonction du nombre de jour.
+     * @param int $id : nombre de jour depuis que l'utilisateur à créer son compte
+     * @return string
+     */
+    public static function memberSince(int $days): string
+    {
+        $week = floor($days / 7);
+        $month = floor($days / 31);
+        $year = floor($days / 365.25);
+
+        $memberSince = match (true) {
+            $year == 1  => "$year an",
+            $year > 1  => "$year ans",
+            $month >= 1  => "$month mois",
+            $week == 1  => "$week semaine",
+            $week > 1  => "$week semaines",
+            $days === 1  => "$days jour",
+            $days < 7  => "$days jours",
+            default => null
+        };
+
+        return $memberSince;
+    }
+
+    /**
      * Cette méthode protège une chaine de caractères contre les attaques XSS.
      * De plus, elle transforme les retours à la ligne en balises <p> pour un affichage plus agréable.
      * @param string $string : la chaine à protéger.
@@ -53,7 +90,7 @@ class Utils
 
         return $finalString;
     }
-    
+
     /**
      * Vérifie que les données saisies par un utilisateur soit correctes
      * @param string $pseudo : le pseudo saisie par l'utilisateur
@@ -121,6 +158,18 @@ class Utils
         }
         header("Location: $url");
         exit();
+    }
+
+    /**
+     * Cette méthode retourne le code js a insérer en attribut d'un bouton.
+     * pour ouvrir une popup "confirm", et n'effectuer l'action que si l'utilisateur
+     * a bien cliqué sur "ok".
+     * @param string $message : le message à afficher dans la popup.
+     * @return string : le code js à insérer dans le bouton.
+     */
+    public static function askConfirmation(string $message): string
+    {
+        return "onclick=\"return confirm('$message');\"";
     }
 
     /**

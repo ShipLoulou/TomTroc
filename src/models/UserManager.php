@@ -108,4 +108,19 @@ class UserManager extends AbstractEntityManager
             'id' => $userId
         ]);
     }
+
+    /**
+     * Modifie le nombre de message non lu de l'utilisateur
+     * @param string $unreadMessage : nombre de message nu lu
+     * @param int $userId : id de l'utilisateur à modifer l'image de profil
+     * @return void
+     */
+    public function updateUnreadMessage(int $unreadMessage, int $userId): void
+    {
+        $sql = "UPDATE user SET unreadMessage = :unreadMessage WHERE user_id = :id";
+        $this->db->query($sql, [
+            'unreadMessage' => $unreadMessage,
+            'id' => $userId
+        ]);
+    }
 }

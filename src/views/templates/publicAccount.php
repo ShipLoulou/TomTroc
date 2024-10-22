@@ -40,7 +40,7 @@
         </div>
         <a 
         class="btn-style-2" 
-        href="index.php?action=message"
+        href="<?=$urlMessage?>"
         aria-label="Ecrire un message à <?= $user->getPseudo() ?>."
         >Écrire un message</a>
     </section>

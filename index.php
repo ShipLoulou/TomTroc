@@ -51,6 +51,11 @@ try {
             $bookController = new BookController();
             $bookController->showBookEdition();
             break;
+
+        case 'messaging':
+            $messageController = new MessageController();
+            $messageController->showMessaging();
+            break;
         
         default:
             throw new Exception("La page demandée n'existe pas.");

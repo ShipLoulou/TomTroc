@@ -110,7 +110,7 @@
                 echo "<input type='file' name='bookPicture' id='bookPicture' class='alignSelf' aria-label='Sélection un image du livre.'>";
             } ?>
             <?php if ($_SESSION["error"] !== null) {
-                echo "<p id='authError'>{$_SESSION['error']}</p>";
+                echo "<p id='authError' class='errorFormEditBook'>{$_SESSION['error']}</p>";
             } ?>
             <input type="text" id="formulaireSend" name="formulaireSend" value="ok" class="displayNone" aria-label="Confirmer">
             <input class="btn-style-1 <?= !$_GET['id'] ? 'alignSelfMargin' : ''?>" type="submit" value="Valider" <?= $_GET['id'] ? Utils::askConfirmation("Êtes-vous sur de vouloir modifier les informations de ce livre ?") : '' ?> aria-label="Confirmer"/>

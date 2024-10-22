@@ -89,6 +89,34 @@ class BookController
         // Récupère tous les utilisateurs.
         $users = $this->userManager->getAllUser();
 
+        // Url de redirection du button message.
+        $urlMessage = null;
+
+        if ($userId) {
+            // Récupère les conversations de l'utilisateur.
+            // Si une conversation est déjà existante entre les utilisateurs, l'url va nous redirigé vers celle-ci.
+            $conversationManager = new ConversationManager();
+            $conversations = $conversationManager->getAllConversationOfUser($userId);
+
+            $listInterlocutor = [];
+            $index = 0;
+
+            foreach ($conversations as $conversation) {
+                if ($conversation->getUserAtInitiativeOfRequest() === $book->getUserId()) {
+                    $urlMessage = "index.php?action=messaging&id={$book->getUserId()}&conv={$conversation->getConversationId()}#scroolBottom";
+
+                } elseif ($conversation->getUserWhoReceivesRequest() === $book->getUserId()) {
+                    $urlMessage = "index.php?action=messaging&id={$book->getUserId()}&conv={$conversation->getConversationId()}#scroolBottom";
+                }
+                $index++;
+            }
+        }
+
+        // Si la conversation n'existe pas, l'url nous redirige avec le lien d'une nouvelle conversation.
+        if (!$urlMessage) {
+            $urlMessage = "index.php?action=messaging&id={$book->getUserId()}&conv={$userId}{$book->getUserId()}&new=new#scroolBottom";
+        }
+
         // Description de la page home (SEO).
         $description = "Livre {$book->getTitle()} de l'auteur {$book->getAuthor()}";
 
@@ -96,7 +124,8 @@ class BookController
         $view->render("singleBook", [
             'book' => $book,
             'users' => $users,
-            'userId' => $userId
+            'userId' => $userId,
+            'urlMessage' => $urlMessage
         ]);
     }
 
@@ -206,7 +235,7 @@ class BookController
         }
 
         // Renomme et télécharge l'image inséré dans le champs $_FILES.
-        if ($_FILES) {
+        if ($_FILES && !empty($bookPicture['name'])) {
             $allowedExtensions = ['jpg', 'png', 'jpeg', 'webp'];
             $file_extension = pathinfo($_FILES['updatePicture']['name'], PATHINFO_EXTENSION);
 

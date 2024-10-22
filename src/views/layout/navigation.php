@@ -1,3 +1,74 @@
+<?php
+/**
+ * Gestion de la navigation mobile (RESPONSIVE)
+ */
+
+// Accède au différent paramètre de l'url.
+$action = Utils::request('action');
+$navbarGestion = Utils::request("navBar");
+
+// Fonction générique pour renvoyer l'adresse de la page actuelle, avec possibilité d'exclure des paramètres
+function getURI($exclusions = [])
+{
+    $adresse = null;
+    $i = 0;
+    foreach($_GET as $cle => $valeur) {
+        if (!in_array($cle, $exclusions)) {
+            $adresse .= ($i == 0 ? '&' : '&').$cle.($valeur ? '='.$valeur : '');
+            $i++;
+        }
+    }
+    return $adresse;
+}
+
+$url = getURI(['action']);
+$oldUrl = getURI(['action', 'navBar']);
+
+/**
+ * Gestion notification message
+ */
+
+// Récupère l'id de l'utilisateur.
+$userId = filter_var($_SESSION['idUser'], FILTER_VALIDATE_INT);
+
+if ($userId) {
+
+    // Récupère les informations de l'utilisateur.
+    $userManager = new UserManager();
+    $infoMyUser = $userManager->getUserById($userId);
+
+    // Récupère l'ensemble des conversations de l'utilisateur.
+    $conversationManager = new ConversationManager();
+    $conversations = $conversationManager->getAllConversationOfUser($userId);
+
+
+    // Ensemble des messages non lu
+    $unreadMessage = [];
+
+    foreach ($conversations as $conv) {
+        // Récupère les messages de la conversation active.
+        $messageManager = new MessageManager();
+        $allMessage = $messageManager->getAllMessageOfConversation($conv->getConversationId());
+
+        // Insère les messages non lu dans le tableau $unreadMessage
+        foreach ($allMessage as $message) {
+            if ($message->getUserId() !== $userId && $message->getView() === false) {
+                $unreadMessage[] = $message;
+            }
+        }
+    }
+
+    // MAJ message non lu profil utilisateur.
+    if (count($unreadMessage) !==  $infoMyUser->getUnreadMessage()) {
+        $userManager->updateUnreadMessage(count($unreadMessage), $userId);
+    }
+
+    // Récupère les informations de l'utilisateur MAJ.
+    $updateInfoMyUser = $userManager->getUserById($userId);
+}
+
+?>
+
 <header>
     <nav class="<?= $navbarGestion ? 'navBarHeightResponsive' : '' ?>">
         <div class="navMobile">
@@ -57,7 +128,12 @@
             <ul>
                 <li>
                     <a 
-                    href="index.php?action=message"
+                    href=<?php $urlMessage = Utils::navigationMessagePart(); 
+                    if (!$urlMessage) {
+                        echo 'index.php?action=home';
+                    } else {
+                        echo $urlMessage;
+                    } ?>
                     aria-label="Redirige vers vos messages si vous être connecté."
                     class="<?= $_REQUEST["action"] === "messaging" ? 'navigationStyleActive': '' ?>"
                     >
@@ -75,6 +151,10 @@
                             />
                         </svg>
                         Messagerie
+                        <?php
+                        if($userId && $updateInfoMyUser->getUnreadMessage() !== 0) { ?>
+                            <div class='numberNotification'> <?= $updateInfoMyUser->getUnreadMessage() ?></div>
+                        <?php } ?>
                     </a>
                 </li>
                 <li>

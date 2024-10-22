@@ -4,11 +4,13 @@ class UserController
 {
     private $bookManager;
     private $userManager;
+    private $conversationManager;
 
     public function __construct()
     {
         $this->bookManager = new BookManager();
         $this->userManager = new UserManager();
+        $this->conversationManager = new ConversationManager();
     }
 
     /**
@@ -260,6 +262,33 @@ class UserController
         $numberOfDay = $user->getRegistrationDate();
         $memberSince = Utils::memberSince($numberOfDay);
 
+        // Url de redirection du button message.
+        $urlMessage = null;
+
+        if ($myUserId) {
+            // Récupère les conversations de l'utilisateur.
+            // Si une conversation est déjà existante entre les utilisateurs, l'url va nous redirigé vers celle-ci.
+            $conversations = $this->conversationManager->getAllConversationOfUser($myUserId);
+
+            $listInterlocutor = [];
+            $index = 0;
+
+            foreach ($conversations as $conversation) {
+                if ($conversation->getUserAtInitiativeOfRequest() === $userId) {
+                    $urlMessage = "index.php?action=messaging&id={$userId}&conv={$conversation->getConversationId()}#scroolBottom";
+
+                } elseif ($conversation->getUserWhoReceivesRequest() === $userId) {
+                    $urlMessage = "index.php?action=messaging&id={$userId}&conv={$conversation->getConversationId()}#scroolBottom";
+                }
+                $index++;
+            }
+        }
+
+        // Si la conversation n'existe pas, l'url nous redirige avec le lien d'une nouvelle conversation.
+        if (!$urlMessage) {
+            $urlMessage = "index.php?action=messaging&id={$userId}&conv={$myUserId}{$userId}&new=new#scroolBottom";
+        }
+
         // Description de la page home (SEO).
         $description = "Profil de {$user->getPseudo()}";
 
@@ -267,7 +296,8 @@ class UserController
         $view->render("publicAccount", [
             'user' => $user,
             'booksUser' => $booksUser,
-            'memberSince' => $memberSince
+            'memberSince' => $memberSince,
+            'urlMessage' => $urlMessage
         ]);
     }
 }

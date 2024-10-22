@@ -173,6 +173,66 @@ class Utils
     }
 
     /**
+     * Renvoie l'url de la page message (vers la conversation la plus récente).
+     * @return ?string : url de la page message
+     */
+    public static function navigationMessagePart(): ?string
+    {
+        // Récupère l'id de l'utilisateur
+        $userId = $_SESSION["idUser"];
+
+        if (!$userId) {
+            return null;
+        }
+
+        // Récupère les conversations de l'utilisateur
+        $conversationManager = new ConversationManager();
+        $conversations = $conversationManager->getAllConversationOfUser($userId);
+
+        $listInterlocutor = [];
+        $index = 0;
+
+        foreach ($conversations as $conversation) {
+            if ($conversation->getUserAtInitiativeOfRequest() !== $userId) {
+                $listInterlocutor[$index]['interlocutorId'] = $conversation->getUserAtInitiativeOfRequest();
+                $listInterlocutor[$index]['conversationId'] = $conversation->getConversationId();
+                $listInterlocutor[$index]['lastMessageSend'] = $conversation->getLastMessageSend();
+            } elseif ($conversation->getUserWhoReceivesRequest() !== $userId) {
+                $listInterlocutor[$index]['interlocutorId'] = $conversation->getUserWhoReceivesRequest();
+                $listInterlocutor[$index]['conversationId'] = $conversation->getConversationId();
+                $listInterlocutor[$index]['lastMessageSend'] = $conversation->getLastMessageSend();
+            }
+            $index++;
+        }
+
+        // Permet de  définir l'ordre des interlocuteur en fonction du dernier message envoyé sur la conversation.
+        function cmp($a, $b)
+        {
+            return $b['lastMessageSend'] <=> $a['lastMessageSend'];
+        }
+
+        usort($listInterlocutor, "cmp");
+
+        if ($listInterlocutor === []) {
+            return null;
+        }
+
+        // Renvoie uniquement le première élément du tableau (soit la conversation la plus recente)
+        $lastActiveConversation = current($listInterlocutor);
+
+        $urlMessage = "index.php?action=messaging";
+
+        if ($lastActiveConversation) {
+            $conv = $lastActiveConversation['conversationId'];
+            $id = $lastActiveConversation['interlocutorId'];
+            // Url de la dernière conversation active
+            $urlMessage = "index.php?action=messaging&id=$id&conv=$conv#scroolBottom";
+        }
+
+        return $urlMessage;
+    }
+
+    /**
      * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.
      * Si cette variable n'est pas définie, on retourne la valeur null (par défaut)
      * ou celle qui est passée en paramètre si elle existe.

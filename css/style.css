@@ -1381,7 +1381,7 @@ footer ul li {
 .page_bookEdition .infoBook {
   display: flex;
   background-color: #fff;
-  height: 941px;
+  height: fit-content;
   border-radius: 20px;
 }
 .page_bookEdition .infoBook .formUpdatePicture {
@@ -1958,4 +1958,10 @@ footer ul li {
 .alignSelfMargin {
   align-self: center; 
   margin-top: 20px;
+}
+
+.errorFormEditBook {
+  align-self: center;
+  margin-top: 20px;
+  margin-bottom: 0;
 }

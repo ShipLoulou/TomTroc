@@ -28,7 +28,7 @@
             </figure>
         </div>
         <a 
-        href= "index.php?action=message"
+        href= "<?= $book->getUserId() !== $userId ? $urlMessage : '#' ?>"
         aria-label="Envoyer un message au propriétaire du livre."
         class="btn-style-1"
         >Envoyer un message</a>

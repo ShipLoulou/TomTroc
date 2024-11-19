@@ -5,7 +5,6 @@ require_once 'src/config/autoload.php';
 
 $action = Utils::request('action', 'home');
 
-$cleaning = new Cleaning;
 $cleaning->deleteUnusedImage();
 
 try {

@@ -129,7 +129,10 @@ if ($userId) {
                 <li>
                     <a 
                     href=<?php $urlMessage = Utils::navigationMessagePart();
-if (!$urlMessage) {
+if (!$userId) {
+    echo 'index.php?action=logIn';
+}
+elseif (!$urlMessage) {
     echo 'index.php?action=home';
 } else {
     echo $urlMessage;

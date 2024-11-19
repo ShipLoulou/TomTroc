@@ -136,6 +136,9 @@ class BookController
      */
     public function showBookEdition()
     {
+        // On vérifie que l'utilisateur est connecté.
+        Utils::checkIfUserIsConnected();
+
         // Récupère l'id de l'utilisateur.
         $userId = filter_var($_SESSION['idUser'], FILTER_VALIDATE_INT);
 
